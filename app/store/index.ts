@@ -1,7 +1,9 @@
 import { create } from "zustand";
 import { Taskstore } from "../types/store";
 
+
 export const useStore = create<Taskstore>((set) => ({
+  taskCompleted: false,
   inputValue: "",
   theme: false,
   task: [
@@ -48,5 +50,10 @@ export const useStore = create<Taskstore>((set) => ({
       ],
     })),
 
+  deleteTask: (id) =>
+    set((state) => ({...state, task: state.task.filter((task) => task.id !== id) })),
+
   setInputValue: (value) => set((state) => ({ inputValue: value })),
+  // toggleCheckCompleted: (id) =>
+  //   set((state) => ({...state,task:})),
 }));

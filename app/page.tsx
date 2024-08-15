@@ -4,22 +4,25 @@ import Sun from "@/public/images/icon-sun.svg";
 import Moon from "@/public/images/icon-moon.svg";
 import Cross from "@/public/images/icon-cross.svg";
 import { useStore } from "./store";
-import { useEffect } from "react";
-
 
 export default function Home() {
-  const { theme, changeTheme, task, addTask, inputValue, setInputValue } =
-    useStore();
+  const {
+    theme,
+    changeTheme,
+    task,
+    addTask,
+    inputValue,
+    setInputValue,
+    taskCompleted,
+    
+    deleteTask,
+  } = useStore();
 
   const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      addTask(inputValue)
-     
+      addTask(inputValue);
     } else null;
   };
-
- 
-  
 
   return (
     <div
@@ -53,7 +56,9 @@ export default function Home() {
             type="text"
             placeholder="Create a new todo"
             className={`${
-              theme ? `bg-VeryDarkDesaturatedBlue` : `bg-VeryLightGray`
+              theme
+                ? `bg-VeryDarkDesaturatedBlue text-VeryLightGray`
+                : `bg-VeryLightGray`
             } px-12 py-2 rounded-sm w-80 lg:w-full border-none outline-none mx-12 lg:mx-0 shadow-sm`}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -68,17 +73,24 @@ export default function Home() {
               <div
                 className={`${
                   theme
-                    ? `bg-VeryDarkDesaturatedBlue text-DarkGrayishBlue`
+                    ? `bg-VeryDarkDesaturatedBlue text-VeryLightGray`
                     : `bg-VeryLightGray`
                 } rounded-tr-sm rounded-tl-sm border-b-[1px] p-3 shadow-sm`}
                 key={task.id}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex gap-4">
-                    <div className="w-5 h-5 border-[1px] border-VeryLightGrayishBlue rounded-full">
+                    <div
+                      className="w-5 h-5 border-[1px] border-VeryLightGrayishBlue rounded-full"
+                     
+                    >
                       <div
-                        className="bg-BrightBlue w-4 h-4 rounded-full bg-[url(../public/images/icon-check.svg)]
-                  bg-no-repeat bg-center p-2"
+                        className={` w-4 h-4 rounded-full ${
+                          taskCompleted
+                            ? `bg-[url(../public/images/icon-check.svg)] bg-BrightBlue`
+                            : ""
+                        }
+                  bg-no-repeat bg-center p-2`}
                       ></div>
                     </div>
                     <h3>{task.todo}</h3>
@@ -89,6 +101,7 @@ export default function Home() {
                       alt={"Cross"}
                       priority
                       className="lg:hidden"
+                      onClick={() => deleteTask(task.id)}
                     />
                   </div>
                 </div>
@@ -105,14 +118,14 @@ export default function Home() {
           >
             <div className="flex items-center justify-center lg:items-center lg:justify-between gap-20 lg:gap-7 text-DarkGrayishBlue">
               <div>
-                <p>5 items left</p>
+                <p>{task.length} items left</p>
               </div>
-              <div className="lg:flex lg:gap-5 hidden">
+              <div className="lg:flex lg:gap-5 hidden cursor-pointer">
                 <p>All</p>
                 <p>Active</p>
                 <p>Completed</p>
               </div>
-              <div>
+              <div className="cursor-pointer">
                 <p>Clear completed</p>
               </div>
             </div>
