@@ -1,5 +1,3 @@
-import { MouseEventHandler } from "react";
-
 export interface tasks {
   id: number;
   todo: String;
@@ -7,7 +5,6 @@ export interface tasks {
 }
 
 export interface Taskstore {
-  taskCompleted: boolean;
   inputValue: string;
   theme: boolean;
   task: tasks[];
@@ -15,5 +12,6 @@ export interface Taskstore {
   addTask: (title: string) => void;
   deleteTask: (id: number) => void;
   setInputValue: (value: string) => void;
-  // toggleCheckCompleted: (id:number) => void;
+  toggleTodo: (id: number) => void;
+  toggleCompleted: (id:number) => void;
 }

@@ -13,9 +13,10 @@ export default function Home() {
     addTask,
     inputValue,
     setInputValue,
-    taskCompleted,
-    
+   toggleTodo,
+
     deleteTask,
+    toggleCompleted
   } = useStore();
 
   const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -23,6 +24,8 @@ export default function Home() {
       addTask(inputValue);
     } else null;
   };
+
+  
 
   return (
     <div
@@ -82,18 +85,17 @@ export default function Home() {
                   <div className="flex gap-4">
                     <div
                       className="w-5 h-5 border-[1px] border-VeryLightGrayishBlue rounded-full"
-                     
+                      onClick={() => toggleTodo(task.id)}
                     >
                       <div
                         className={` w-4 h-4 rounded-full ${
-                          taskCompleted
-                            ? `bg-[url(../public/images/icon-check.svg)] bg-BrightBlue`
-                            : ""
+                          task.completed &&
+                          `bg-[url(../public/images/icon-check.svg)] bg-BrightBlue`
                         }
                   bg-no-repeat bg-center p-2`}
                       ></div>
                     </div>
-                    <h3>{task.todo}</h3>
+                    <h3 className={`${task.completed && `line-through`}`}>{task.todo}</h3>
                   </div>
                   <div>
                     <Image
