@@ -13,19 +13,19 @@ export default function Home() {
     addTask,
     inputValue,
     setInputValue,
-   toggleTodo,
-
+    toggleTodo,
+filteredTask,
     deleteTask,
-    toggleCompleted
+
+    toggleFilter,
   } = useStore();
 
   const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       addTask(inputValue);
-    } else null;
+      setInputValue("");
+    }
   };
-
-  
 
   return (
     <div
@@ -95,7 +95,9 @@ export default function Home() {
                   bg-no-repeat bg-center p-2`}
                       ></div>
                     </div>
-                    <h3 className={`${task.completed && `line-through`}`}>{task.todo}</h3>
+                    <h3 className={`${task.completed && `line-through`}`}>
+                      {task.todo}
+                    </h3>
                   </div>
                   <div>
                     <Image
@@ -123,9 +125,9 @@ export default function Home() {
                 <p>{task.length} items left</p>
               </div>
               <div className="lg:flex lg:gap-5 hidden cursor-pointer">
-                <p>All</p>
-                <p>Active</p>
-                <p>Completed</p>
+                <p onClick={() => toggleFilter("All")}>All</p>
+                <p onClick={() => toggleFilter("Active")}>Active</p>
+                <p onClick={() => toggleFilter("Completed")}>Completed</p>
               </div>
               <div className="cursor-pointer">
                 <p>Clear completed</p>
@@ -138,17 +140,17 @@ export default function Home() {
               theme
                 ? `bg-VeryDarkDesaturatedBlue text-DarkGrayishBlue`
                 : `bg-VeryLightGray`
-            }  p-3 rounded-sm text-DarkGrayishBlue lg:hidden shadow-md`}
+            }  p-3 rounded-sm text-DarkGrayishBlue hidden shadow-md`}
           >
-            <div>
-              <p>All</p>
+            {/* <div>
+              <p onClick={() => toggleFilter("All")}>All</p>
             </div>
             <div>
-              <p>Active</p>
+              <p onClick={() => toggleFilter("Active")}>Active</p>
             </div>
             <div>
-              <p>Clear completed</p>
-            </div>
+              <p onClick={() => toggleFilter("Completed")}>Completed</p>
+            </div> */}
           </div>
         </div>
         {/* Todo List */}
