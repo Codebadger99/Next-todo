@@ -14,10 +14,8 @@ export default function Home() {
     inputValue,
     setInputValue,
     toggleTodo,
-    filteredTask,
-    deleteTask,
 
-    toggleFilter,
+    deleteTask,
   } = useStore();
 
   const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -104,7 +102,6 @@ export default function Home() {
                       src={Cross}
                       alt={"Cross"}
                       priority
-                   
                       onClick={() => deleteTask(task.id)}
                     />
                   </div>
