@@ -1,10 +1,12 @@
 export interface tasks {
   id: number;
-  todo: String;
+  todo: string;
   completed: boolean;
 }
 
 export interface Taskstore {
+  filteredTask: tasks[];
+  CompletedTask: tasks[];
   inputValue: string;
   theme: boolean;
   task: tasks[];
@@ -14,5 +16,6 @@ export interface Taskstore {
   deleteTask: (id: number) => void;
   setInputValue: (value: string) => void;
   toggleTodo: (id: number) => void;
-  toggleCompleted: (id: number) => void;
+  toggleCompleted: () => void;
+  toggleFilter: (filter: string) => void;
 }

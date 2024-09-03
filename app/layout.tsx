@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localfont from "next/font/local";
 import "./globals.css";
-
+import { theme } from "./theme";
 
 const font = localfont({
   src: "./../public/JosefinSans-VariableFont_wght.ttf",
@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
-      <body className={font.className} >{children}</body>
+    <html lang="en">
+      <body className={font.className}>{children}</body>
     </html>
   );
 }

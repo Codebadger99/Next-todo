@@ -1,7 +1,10 @@
 import { create } from "zustand";
 import { Taskstore } from "../types/store";
+import { persist } from "zustand/middleware";
 
 export const useStore = create<Taskstore>((set) => ({
+  filteredTask: [],
+  CompletedTask: [],
   inputValue: "",
   theme: false,
   task: [
@@ -54,17 +57,24 @@ export const useStore = create<Taskstore>((set) => ({
       task: state.task.filter((task) => task.id !== id),
     })),
 
-  setInputValue: (value) => set((state) => ({ inputValue: value })),
+  setInputValue: (value) => set(() => ({ inputValue: value })),
   toggleTodo: (id) =>
     set((state) => ({
       task: state.task.map((tasks) =>
         tasks.id === id ? { ...tasks, completed: !tasks.completed } : tasks
       ),
     })),
-  toggleCompleted: (id) =>
+  toggleCompleted: () =>
     set((state) => ({
-      task: state.task.filter((tasks) =>
-        tasks.completed ? state.task.splice(id, 1) : tasks
-      ),
+      task: state.task.filter((tasks) => !tasks.completed),
+    })),
+  toggleFilter: (filter) =>
+    set((state) => ({
+      filteredTask:
+        filter === "All"
+          ? state.task
+          : filter === "Active"
+          ? state.task.filter((tasks) => !tasks.completed)
+          : state.task.filter((tasks) => tasks.completed),
     })),
 }));
