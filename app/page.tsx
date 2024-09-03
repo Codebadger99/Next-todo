@@ -32,7 +32,7 @@ export default function Home() {
     return () => {
       toggleFilter("All");
     };
-  }, [task]);
+  }, [task,toggleFilter]);
 
   return (
     <div
