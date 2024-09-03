@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { Taskstore } from "../types/store";
-import { persist } from "zustand/middleware";
 
 export const useStore = create<Taskstore>((set) => ({
   filteredTask: [],
