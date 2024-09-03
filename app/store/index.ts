@@ -67,5 +67,4 @@ export const useStore = create<Taskstore>((set) => ({
         tasks.completed ? state.task.splice(id, 1) : tasks
       ),
     })),
-  
 }));
