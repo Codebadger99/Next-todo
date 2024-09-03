@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { Taskstore } from "../types/store";
 
 export const useStore = create<Taskstore>((set) => ({
-  filteredTask: [],
   inputValue: "",
   theme: false,
   task: [
@@ -68,15 +67,5 @@ export const useStore = create<Taskstore>((set) => ({
         tasks.completed ? state.task.splice(id, 1) : tasks
       ),
     })),
-  toggleFilter: (filters) =>
-    set((state) => ({
-      filteredTask:
-        filters === ""
-          ? state.task
-          : filters === "All"
-          ? state.task.filter((tasks) => tasks)
-          : filters === "Active"
-          ? state.task.filter((tasks) => !tasks.completed)
-          : state.task.filter((tasks) => tasks.completed),
-    })),
+  
 }));
