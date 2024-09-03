@@ -14,7 +14,7 @@ export default function Home() {
     inputValue,
     setInputValue,
     toggleTodo,
-filteredTask,
+    filteredTask,
     deleteTask,
 
     toggleFilter,
@@ -104,7 +104,7 @@ filteredTask,
                       src={Cross}
                       alt={"Cross"}
                       priority
-                      className="lg:hidden"
+                   
                       onClick={() => deleteTask(task.id)}
                     />
                   </div>
@@ -124,14 +124,14 @@ filteredTask,
               <div>
                 <p>{task.length} items left</p>
               </div>
-              <div className="lg:flex lg:gap-5 hidden cursor-pointer">
+              {/* <div className="lg:flex lg:gap-5 hidden cursor-pointer">
                 <p onClick={() => toggleFilter("All")}>All</p>
                 <p onClick={() => toggleFilter("Active")}>Active</p>
                 <p onClick={() => toggleFilter("Completed")}>Completed</p>
-              </div>
-              <div className="cursor-pointer">
+              </div> */}
+              {/* <div className="cursor-pointer">
                 <p>Clear completed</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
