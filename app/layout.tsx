@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localfont from "next/font/local";
 import "./globals.css";
-import { theme } from "./theme";
+
 
 const font = localfont({
   src: "./../public/JosefinSans-VariableFont_wght.ttf",
