@@ -29,10 +29,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    return () => {
-      toggleFilter("All");
-    };
-  }, [task,toggleFilter]);
+    toggleFilter("All");
+  }, [task, toggleFilter]);
 
   return (
     <div
