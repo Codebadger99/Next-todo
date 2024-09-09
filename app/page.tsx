@@ -40,7 +40,7 @@ export default function Home() {
           : `bg-[url(../public/images/bg-mobile-light.jpg)] md:bg-[url(../public/images/bg-desktop-light.jpg)]`
       } h-72 bg-no-repeat bg-cover`}
     >
-      <div className="grid items-center justify-center py-12 mx-auto md:mx-0 min-w-fit">
+      <div className="grid items-center justify-center py-12 mx-auto md:mx-0">
         {/* Heading */}
         <div className="flex items-center justify-center gap-28 md:gap-80 mb-8">
           <h1 className="text-VeryLightGray font-bold text-3xl">TODO</h1>
