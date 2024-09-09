@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localfont from "next/font/local";
 import "./globals.css";
+import Theme from "./theme";
+
+
 
 
 const font = localfont({
@@ -18,8 +21,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ 
   return (
     <html lang="en">
+      <Theme/>
       <body className={font.className}>{children}</body>
     </html>
   );
