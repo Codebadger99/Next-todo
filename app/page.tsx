@@ -36,13 +36,13 @@ export default function Home() {
     <div
       className={`${
         theme
-          ? `bg-[url(../public/images/bg-mobile-dark.jpg)] lg:bg-[url(../public/images/bg-desktop-dark.jpg)]`
-          : `bg-[url(../public/images/bg-mobile-light.jpg)] lg:bg-[url(../public/images/bg-desktop-light.jpg)]`
-      } h-72 bg-no-repeat bg-cover `}
+          ? `bg-[url(../public/images/bg-mobile-dark.jpg)] md:bg-[url(../public/images/bg-desktop-dark.jpg)]`
+          : `bg-[url(../public/images/bg-mobile-light.jpg)] md:bg-[url(../public/images/bg-desktop-light.jpg)]`
+      } h-72 bg-no-repeat bg-cover`}
     >
-      <div className="grid items-center justify-center py-12 mr-2 lg:mx-0">
+      <div className="grid items-center justify-center py-12 mx-auto md:mx-0 min-w-fit">
         {/* Heading */}
-        <div className="flex items-center justify-center gap-28 lg:gap-80 mb-8">
+        <div className="flex items-center justify-center gap-28 md:gap-80 mb-8">
           <h1 className="text-VeryLightGray font-bold text-3xl">TODO</h1>
           <Image
             src={theme ? Sun : Moon}
@@ -57,7 +57,7 @@ export default function Home() {
         {/* Input */}
         <div>
           <div
-            className="w-5 h-5 border-[1px] border-VeryLightGrayishBlue rounded-full relative lg:left-4 top-7 
+            className="w-5 h-5 border-[1px] border-VeryLightGrayishBlue rounded-full relative md:left-4 top-7 
           left-14"
           ></div>
           <input
@@ -67,7 +67,7 @@ export default function Home() {
               theme
                 ? `bg-VeryDarkDesaturatedBlue text-VeryLightGray`
                 : `bg-VeryLightGray`
-            } px-12 py-2 rounded-sm w-64 lg:w-full border-none outline-none mx-12 lg:mx-0 shadow-sm`}
+            } px-12 py-2 rounded-sm w-64 md:w-full border-none outline-none mx-12 md:mx-0 shadow-sm`}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleSubmit}
@@ -75,7 +75,7 @@ export default function Home() {
         </div>
         {/* Input */}
         {/* Todo List */}
-        <div className="mt-5 w-64 ml-12 lg:ml-0 lg:w-full ">
+        <div className="mt-5 w-64 ml-12 md:ml-0 md:w-full ">
           {filteredTask.map((task) => {
             return (
               <div
@@ -109,7 +109,7 @@ export default function Home() {
                       src={Cross}
                       alt={"Cross"}
                       priority
-                      className="lg:hidden"
+                      className="md:hidden"
                       onClick={() => deleteTask(task.id)}
                     />
                   </div>
@@ -125,11 +125,11 @@ export default function Home() {
                 : `bg-VeryLightGray`
             }  p-3 rounded-b-sm rounded-bl-sm shadow-md`}
           >
-            <div className="flex items-center justify-center lg:items-center lg:justify-between gap-5 lg:gap-7 text-DarkGrayishBlue">
+            <div className="flex items-center justify-center md:items-center md:justify-between gap-5 md:gap-7 text-DarkGrayishBlue">
               <div>
                 <p className="flex">{filteredTask.length} items left</p>
               </div>
-              <div className="lg:flex lg:gap-5 hidden cursor-pointer">
+              <div className="md:flex md:gap-5 hidden cursor-pointer">
                 <p onClick={() => toggleFilter("All")}>All</p>
                 <p onClick={() => toggleFilter("Active")}>Active</p>
                 <p onClick={() => toggleFilter("Completed")}>Completed</p>
@@ -145,7 +145,7 @@ export default function Home() {
               theme
                 ? `bg-VeryDarkDesaturatedBlue text-DarkGrayishBlue`
                 : `bg-VeryLightGray`
-            }  p-3 rounded-sm text-DarkGrayishBlue lg:hidden shadow-md`}
+            }  p-3 rounded-sm text-DarkGrayishBlue md:hidden shadow-md`}
           >
             <div>
               <p onClick={() => toggleFilter("All")}>All</p>

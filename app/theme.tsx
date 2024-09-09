@@ -1,6 +1,6 @@
-'use client'
+"use client";
 import { useEffect } from "react";
-import { useStore } from "./store"; // Import the Zustand store
+import { useStore } from "./store";
 import localFont from "next/font/local";
 
 const font = localFont({
@@ -9,7 +9,6 @@ const font = localFont({
 });
 
 const Theme: React.FC = () => {
-  // Access Zustand store state
   const { theme } = useStore();
 
   useEffect(() => {
@@ -17,7 +16,7 @@ const Theme: React.FC = () => {
     document.body.className = `${font.className} ${bodyClass}`;
   }, [theme]);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default Theme;
