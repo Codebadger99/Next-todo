@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Theme/>
+      <main>
       <body className={font.className}>{children}</body>
+      </main>
     </html>
   );
 }
